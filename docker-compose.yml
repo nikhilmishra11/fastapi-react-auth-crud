@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  auth-service:
+    build:
+      context: ./services/auth-service
+    ports:
+      - "8001:8001"
+    environment:
+      - FRONTEND_URL=http://localhost:5173
+      - OIDC_CLIENT_ID=mock-client-id
+      - OIDC_CLIENT_SECRET=mock-client-secret
+      - OIDC_ISSUER=mock-issuer
+
+  item-service:
+    build:
+      context: ./services/item-service
+    ports:
+      - "8002:8002"
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "5173:80"
+    environment:
+      - VITE_AUTH_URL=http://localhost:8001
+      - VITE_API_URL=http://localhost:8002
