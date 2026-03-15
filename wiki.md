@@ -90,7 +90,42 @@ block-beta
 
 ---
 
-## 3. How to Deploy and Run the Application
+## 3. Tool Directory Mapping
+
+This diagram maps the primary tools and technologies explicitly to the directory structure where they are configured and utilized.
+
+```mermaid
+mindmap
+  root((fastapi-react-auth-crud))
+    Frontend Layer
+      ((/frontend))
+        React
+        Redux Toolkit
+        Tailwind CSS
+        Vite
+        Axios
+    Backend Layer
+      ((/services))
+        ((/auth-service))
+          FastAPI
+          Passlib & JWT
+          Uvicorn
+        ((/item-service))
+          FastAPI
+          Pydantic
+          Uvicorn
+    DevOps & Infra
+      ((/k8s))
+        Kubernetes Manifests
+      ((docker-compose.yml))
+        Docker Compose
+      ((Jenkinsfile))
+        Jenkins Pipeline Groovy
+```
+
+---
+
+## 4. How to Deploy and Run the Application
 
 There are multiple ways to run and deploy this application depending on your needs. For development, `docker-compose` is highly recommended. For production equivalents, we provide Kubernetes manifests.
 
