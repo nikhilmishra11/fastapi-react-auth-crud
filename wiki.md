@@ -95,32 +95,69 @@ block-beta
 This diagram maps the primary tools and technologies explicitly to the directory structure where they are configured and utilized.
 
 ```mermaid
-mindmap
-  root((fastapi-react-auth-crud))
-    Frontend Layer
-      ((/frontend))
-        React
-        Redux Toolkit
-        Tailwind CSS
-        Vite
-        Axios
-    Backend Layer
-      ((/services))
-        ((/auth-service))
-          FastAPI
-          Passlib & JWT
-          Uvicorn
-        ((/item-service))
-          FastAPI
-          Pydantic
-          Uvicorn
-    DevOps & Infra
-      ((/k8s))
-        Kubernetes Manifests
-      ((docker-compose.yml))
-        Docker Compose
-      ((Jenkinsfile))
-        Jenkins Pipeline Groovy
+graph TD
+    classDef dir fill:#e1f5fe,stroke:#03a9f4,stroke-width:2px,color:#000
+    classDef tool fill:#f9f9f9,stroke:#333,stroke-width:1px,color:#333
+
+    Root["fa:fa-folder-open fastapi-react-auth-crud"]:::dir
+
+    subgraph Frontend["Frontend Layer"]
+        FE_Dir["fa:fa-folder /frontend"]:::dir
+        React["fab:fa-react React"]:::tool
+        Redux["fa:fa-database Redux Toolkit"]:::tool
+        TW["fab:fa-css3-alt Tailwind CSS"]:::tool
+        Vite["fa:fa-bolt Vite"]:::tool
+    end
+
+    subgraph Backend["Backend Layer"]
+        Services_Dir["fa:fa-folder /services"]:::dir
+        Auth_Dir["fa:fa-folder /auth-service"]:::dir
+        Item_Dir["fa:fa-folder /item-service"]:::dir
+        
+        FA1["fa:fa-rocket FastAPI"]:::tool
+        FA2["fa:fa-rocket FastAPI"]:::tool
+        Sec["fa:fa-shield-alt Passlib & JWT"]:::tool
+        Uvi1["fa:fa-play-circle Uvicorn"]:::tool
+        Uvi2["fa:fa-play-circle Uvicorn"]:::tool
+    end
+
+    subgraph DevOps["DevOps & Infra"]
+        K8s_Dir["fa:fa-folder /k8s"]:::dir
+        K8s["fa:fa-dharmachakra Kubernetes Manifests"]:::tool
+        Docker_File["fa:fa-file-code docker-compose.yml"]:::dir
+        Docker["fab:fa-docker Docker Compose"]:::tool
+        Jenkins_File["fa:fa-file-code Jenkinsfile"]:::dir
+        Jenkins["fab:fa-jenkins Jenkins Pipeline"]:::tool
+    end
+
+    Root --> Frontend
+    Root --> Backend
+    Root --> DevOps
+
+    Frontend --- FE_Dir
+    FE_Dir --> React
+    FE_Dir --> Redux
+    FE_Dir --> TW
+    FE_Dir --> Vite
+
+    Backend --- Services_Dir
+    Services_Dir --> Auth_Dir
+    Services_Dir --> Item_Dir
+
+    Auth_Dir --> FA1
+    Auth_Dir --> Sec
+    Auth_Dir --> Uvi1
+
+    Item_Dir --> FA2
+    Item_Dir --> Uvi2
+    
+    DevOps --- K8s_Dir
+    DevOps --- Docker_File
+    DevOps --- Jenkins_File
+    
+    K8s_Dir --> K8s
+    Docker_File --> Docker
+    Jenkins_File --> Jenkins
 ```
 
 ---
