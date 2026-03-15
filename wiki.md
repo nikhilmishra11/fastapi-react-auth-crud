@@ -99,35 +99,35 @@ graph TD
     classDef dir fill:#e1f5fe,stroke:#03a9f4,stroke-width:2px,color:#000
     classDef tool fill:#f9f9f9,stroke:#333,stroke-width:1px,color:#333
 
-    Root["fa:fa-folder-open fastapi-react-auth-crud"]:::dir
+    Root["📂 fastapi-react-auth-crud"]:::dir
 
     subgraph Frontend["Frontend Layer"]
-        FE_Dir["fa:fa-folder /frontend"]:::dir
-        React["fab:fa-react React"]:::tool
-        Redux["fa:fa-database Redux Toolkit"]:::tool
-        TW["fab:fa-css3-alt Tailwind CSS"]:::tool
-        Vite["fa:fa-bolt Vite"]:::tool
+        FE_Dir["📁 /frontend"]:::dir
+        React["⚛️ React"]:::tool
+        Redux["📦 Redux Toolkit"]:::tool
+        TW["🎨 Tailwind CSS"]:::tool
+        Vite["⚡ Vite"]:::tool
     end
 
     subgraph Backend["Backend Layer"]
-        Services_Dir["fa:fa-folder /services"]:::dir
-        Auth_Dir["fa:fa-folder /auth-service"]:::dir
-        Item_Dir["fa:fa-folder /item-service"]:::dir
+        Services_Dir["📁 /services"]:::dir
+        Auth_Dir["📁 /auth-service"]:::dir
+        Item_Dir["📁 /item-service"]:::dir
         
-        FA1["fa:fa-rocket FastAPI"]:::tool
-        FA2["fa:fa-rocket FastAPI"]:::tool
-        Sec["fa:fa-shield-alt Passlib & JWT"]:::tool
-        Uvi1["fa:fa-play-circle Uvicorn"]:::tool
-        Uvi2["fa:fa-play-circle Uvicorn"]:::tool
+        FA1["🚀 FastAPI"]:::tool
+        FA2["🚀 FastAPI"]:::tool
+        Sec["🛡️ Passlib & JWT"]:::tool
+        Uvi1["▶️ Uvicorn"]:::tool
+        Uvi2["▶️ Uvicorn"]:::tool
     end
 
     subgraph DevOps["DevOps & Infra"]
-        K8s_Dir["fa:fa-folder /k8s"]:::dir
-        K8s["fa:fa-dharmachakra Kubernetes Manifests"]:::tool
-        Docker_File["fa:fa-file-code docker-compose.yml"]:::dir
-        Docker["fab:fa-docker Docker Compose"]:::tool
-        Jenkins_File["fa:fa-file-code Jenkinsfile"]:::dir
-        Jenkins["fab:fa-jenkins Jenkins Pipeline"]:::tool
+        K8s_Dir["📁 /k8s"]:::dir
+        K8s["☸️ Kubernetes Manifests"]:::tool
+        Docker_File["📄 docker-compose.yml"]:::dir
+        Docker["🐳 Docker Compose"]:::tool
+        Jenkins_File["📜 Jenkinsfile"]:::dir
+        Jenkins["👨‍🍳 Jenkins Pipeline"]:::tool
     end
 
     Root --> Frontend
