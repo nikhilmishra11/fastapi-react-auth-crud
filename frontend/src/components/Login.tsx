@@ -20,7 +20,7 @@ const Login: React.FC = () => {
 
   const handleOIDCLogin = () => {
     // Redirect to Auth Microservice
-    const AUTH_URL = import.meta.env.VITE_AUTH_URL || 'http://localhost:8001';
+    const AUTH_URL = (import.meta as any).env?.VITE_AUTH_URL || 'http://localhost:8001';
     window.location.href = `${AUTH_URL}/auth/login`;
   };
 

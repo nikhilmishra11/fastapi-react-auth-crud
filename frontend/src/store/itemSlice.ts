@@ -3,16 +3,16 @@ import axios from 'axios';
 import { RootState } from './store';
 
 export interface Item {
-  id: str;
-  name: str;
-  description?: str;
+  id: string;
+  name: string;
+  description?: string;
   price: number;
 }
 
 interface ItemState {
   items: Item[];
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
-  error: str | null;
+  error: string | null;
 }
 
 const initialState: ItemState = {
@@ -21,7 +21,7 @@ const initialState: ItemState = {
   error: null,
 };
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8002';
+const API_URL = (import.meta as any).env?.VITE_API_URL || 'http://localhost:8002';
 
 export const fetchItems = createAsyncThunk('items/fetchItems', async (_, { getState }) => {
   const state = getState() as RootState;
@@ -47,7 +47,7 @@ export const updateItem = createAsyncThunk('items/updateItem', async (item: Item
   return response.data;
 });
 
-export const deleteItem = createAsyncThunk('items/deleteItem', async (id: str, { getState }) => {
+export const deleteItem = createAsyncThunk('items/deleteItem', async (id: string, { getState }) => {
   const state = getState() as RootState;
   await axios.delete(`${API_URL}/items/${id}`, {
     headers: { Authorization: `Bearer ${state.auth.token}` }
